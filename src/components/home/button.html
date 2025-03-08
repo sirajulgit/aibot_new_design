@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowing Button with Orbiting Light</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .glowing-button {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(90deg, #ff6600, #0044ff);
+            border: none;
+            border-radius: 30px;
+            padding: 12px 30px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.6);
+            overflow: hidden;
+        }
+
+        /* Soft Glowing Border */
+        .glowing-button::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 30px;
+            background: linear-gradient(90deg, #ff6600, #0044ff);
+            z-index: -1;
+            filter: blur(10px);
+            opacity: 0.8;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .glowing-button:hover::before {
+            opacity: 1;
+            filter: blur(15px);
+        }
+
+        /* Moving Glow Point Orbiting the Border */
+        .glow-orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 30px;
+            pointer-events: none;
+        }
+
+        .glow-orbit::before {
+            content: "";
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0) 70%);
+            border-radius: 50%;
+            animation: orbitAround 3s linear infinite;
+        }
+
+        @keyframes orbitAround {
+            0%   { top: 0%; left: 10%; }
+            25%  { top: 100%; left: 90%; transform: translateY(-100%); }
+            50%  { top: 100%; left: 10%; transform: translateY(-100%); }
+            75%  { top: 0%; left: 90%; }
+            100% { top: 0%; left: 10%; }
+        }
+
+        .glowing-button span {
+            margin-left: 8px;
+            font-size: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .glowing-button:hover span {
+            transform: translateX(5px);
+        }
+
+    </style>
+</head>
+<body>
+    <button class="glowing-button">
+        Get Started <span>→</span>
+        <div class="glow-orbit"></div>
+    </button>
+</body>
+</html>

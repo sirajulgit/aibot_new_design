@@ -1,0 +1,126 @@
+/* These styles should be added to your existing CSS file */
+
+.roadmap {
+    opacity: 0.7; /* Initial state before animation */
+    transform: translateY(50px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    position: relative;
+    overflow: visible;
+  }
+  
+  .roadmap_wrapper {
+    width: 100%;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+    background-color: #fff; /* Or whatever your background color is */
+    z-index: 10;
+  }
+  
+  .roadmap-spacer {
+    width: 100%;
+    /* Height is calculated based on the number of items */
+  }
+  
+  .roadmap_text {
+    flex: 1;
+    position: relative;
+  }
+  
+  .roadmap_text_item {
+    position: relative;
+    margin-bottom: 30px;
+  }
+  
+  .progress_bar_wrapper {
+    position: relative;
+    height: 100%;
+    width: 3px;
+    background-color: #e9e9e9;
+    margin-left: 20px;
+  }
+  
+  .progress_bar {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 0%; /* Will be controlled by GSAP */
+    background-color: #55acee;
+  }
+  
+  .color {
+    width: 100%;
+    height: 100%;
+    background-color: #55acee;
+  }
+  
+  .side_icons_text_item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  
+  .side_icons_text_item.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    position: absolute;
+    z-index: -1;
+    height: 0;
+    overflow: hidden;
+  }
+  
+  .side_icons_text_item.visible {
+    opacity: 1;
+    transform: translateY(0);
+    position: relative;
+    z-index: 1;
+    height: auto;
+  }
+  
+  .side_icons_text_item .icon {
+    flex-shrink: 0;
+    margin-right: 15px;
+  }
+  
+  .side_icons_text_item .text_t {
+    flex-grow: 1;
+  }
+  
+  .icon img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+  }
+  
+  .roadmap_image {
+    transform: scale(1) rotate(20deg); /* Initial state */
+    transition: transform 1s ease;
+    flex: 1;
+  }
+  
+  /* When using GSAP for animation, these classes might not be needed directly,
+     but they can serve as a fallback or for non-JS browsers */
+  .roadmap.in-viewport {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .roadmap_image.in-viewport {
+    transform: scale(1.1) rotate(0);
+  }
+  
+  /* Added for smoother transitions of roadmap items */
+  .side_icons_text_item {
+    transition: opacity 0.3s ease, transform 0.3s ease, height 0.3s ease;
+  }
